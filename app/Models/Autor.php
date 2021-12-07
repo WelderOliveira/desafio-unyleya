@@ -8,13 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Autor extends Model
 {
     use HasFactory;
+
     protected $fillable = [
-        'nome','nacionalidade','sexo','dt_nascimento'
+        'nome', 'nacionalidade', 'sexo', 'dt_nascimento'
     ];
-    protected $table='autor';
 
     public function livros()
     {
-        return $this->hasMany('App\Models\Livro');
+        return $this->hasMany(Livro::class);
     }
 }

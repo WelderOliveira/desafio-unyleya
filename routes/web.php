@@ -13,12 +13,32 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/', [\App\Http\Controllers\LivrosController::class, 'index'])
+        ->name('indexLivro');
+
+    Route::get('/livro/create', [\App\Http\Controllers\LivrosController::class, 'create'])
+        ->name('createLivro');
+
+    Route::post('/livro', [\App\Http\Controllers\LivrosController::class, 'store'])
+        ->name('storeLivro');
+
+    Route::get('/livro/edit/{id}',[\App\Http\Controllers\LivrosController::class,'edit'])
+        ->name('editLivro');
+
+    Route::put('/livro/edit/{id}',[\App\Http\Controllers\LivrosController::class,'update'])
+        ->name('updateLivro');
+
+    Route::delete('/livro/{id}',[\App\Http\Controllers\LivrosController::class,'destroy'])
+        ->name('destroyLivro');
 });
+
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

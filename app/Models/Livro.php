@@ -12,22 +12,33 @@ class Livro extends Model
     /**
      * @var string[]
      */
+    static $rules = [
+        'titulo'=>'required',
+        'dt_lancamento'=>'required',
+        'autor_id'=>'required',
+        'genero_id'=>'required',
+        'editora_id'=>'required'
+    ];
+
+    /**
+     * @var string[]
+     */
     protected $fillable = [
         'titulo', 'genero_id', 'editora_id', 'autor_id', 'dt_lancamento',
     ];
 
-    public function autor()
+    public function autors()
     {
-        return $this->belongsTo('App\Models\Autor');
+        return $this->belongsTo(Autor::class, 'autor_id', 'id');
     }
 
     public function editora()
     {
-        return $this->belongsTo('App\Models\Editora');
+        return $this->belongsTo(Editora::class, 'editora_id');
     }
 
     public function genero()
     {
-        return $this->belongsTo('App\Models\Genero');
+        return $this->belongsTo(Genero::class);
     }
 }
