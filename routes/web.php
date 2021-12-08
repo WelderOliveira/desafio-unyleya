@@ -60,4 +60,28 @@ Route::group(['middleware' => 'auth'], function () {
         ->name('destroyAutor');
 });
 
+Route::group(['middleware' => 'auth'], function () {
+
+    Route::get('/editora', [\App\Http\Controllers\EditoraController::class, 'index'])
+        ->name('indexEditora');
+
+    Route::get('/editora/create', [\App\Http\Controllers\EditoraController::class, 'create'])
+        ->name('createEditora');
+
+    Route::post('/editora', [\App\Http\Controllers\EditoraController::class, 'store'])
+        ->name('storeEditora');
+
+    Route::get('/editora/edit/{id}', [\App\Http\Controllers\EditoraController::class, 'edit'])
+        ->name('editEditora');
+
+    Route::get('/editora/{id}', [\App\Http\Controllers\EditoraController::class, 'show'])
+        ->name('showEditora');
+
+    Route::put('/editora/edit/{id}', [\App\Http\Controllers\EditoraController::class, 'update'])
+        ->name('updateEditora');
+
+    Route::delete('/editora/{id}', [\App\Http\Controllers\EditoraController::class, 'destroy'])
+        ->name('destroyEditora');
+});
+
 require __DIR__ . '/auth.php';

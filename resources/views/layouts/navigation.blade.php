@@ -26,6 +26,11 @@
                         {{ __('Adicionar Autor') }}
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('createEditora')" :active="request()->routeIs('createEditora')">
+                        {{ __('Adicionar Editora') }}
+                    </x-nav-link>
+                </div>
             </div>
 
             <!-- Settings Dropdown -->
@@ -85,6 +90,11 @@
         <div class="pt-2 pb-3 space-y-1">
             <x-nav-link :href="route('createAutor')" :active="request()->routeIs('createAutor')">
                 {{ __('Adicionar Autor') }}
+            </x-nav-link>
+        </div>
+        <div class="pt-2 pb-3 space-y-1">
+            <x-nav-link :href="route('createEditora')" :active="request()->routeIs('createEditora')">
+                {{ __('Adicionar Editora') }}
             </x-nav-link>
         </div>
 

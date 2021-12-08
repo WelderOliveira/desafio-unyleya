@@ -12,8 +12,12 @@ class Editora extends Model
         'nome'
     ];
 
+    static $rules = [
+        'nome' => 'required'
+    ];
+
     public function livros()
     {
-        return $this->hasMany('App\Models\Livro');
+        return $this->hasMany(Livro::class);
     }
 }
