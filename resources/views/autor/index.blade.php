@@ -11,29 +11,28 @@
                     <table id="myTable" class="table table-striped table-bordered">
                         <thead>
                         <tr>
-                            <th>Titulo</th>
-                            <th>Autor</th>
-                            <th>Genero</th>
-                            <th>Editora</th>
+                            <th>Nome</th>
+                            <th>Data de Nascimento</th>
+                            <th>Sexo</th>
+                            <th>Nacionalidade</th>
                             <th>Actions</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($livros as $livro)
+                        @foreach($autores as $autor)
 
                             <tr>
 
-                                <td><a class='a-line' href="{{route('showLivro',$livro->id)}}">{{$livro->titulo}}</a></td>
-
-                                <td>{{$livro->autors->nome ?? 'Autor Não Cadastrado'}}</td>
-                                <td>{{$livro->genero->genero ?? 'Gênero Não Cadastrado'}}</td>
-                                <td>{{$livro->editora->nome ?? 'Editora Não Cadastrado'}}</td>
+                                <td><a class='a-line' href="{{route('showAutor',$autor->id)}}">{{$autor->nome}}</a></td>
+                                <td>{{$autor->dt_nascimento}}</td>
+                                <td>{{$autor->sexo}}</td>
+                                <td>{{$autor->nacionalidade}}</td>
                                 <td class="d-none d-md-table-cell d-flex justify-content-center mb-2">
                                     <div class="row">
-                                        <a href="{{route('editLivro', $livro->id)}}"
+                                        <a href="{{route('editAutor', $autor->id)}}"
                                            class="btn btn-outline-primary mx-2">
                                             <i class="fas fa-user-edit"></i></a>
-                                        <form action="{{route('destroyLivro',$livro->id)}}" method="POST">
+                                        <form action="{{route('destroyAutor',$autor->id)}}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-outline-danger mx-2 verifica">

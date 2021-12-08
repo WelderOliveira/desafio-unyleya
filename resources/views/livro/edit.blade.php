@@ -1,6 +1,3 @@
-@section('styles')
-
-@endsection
 <x-app-layout>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -17,14 +14,14 @@
 
                         <div class="form-group">
                             <label for="dt_lancamento">Data de Lançamento</label>
-                            <input type="date" id="dt_lancamento" name="dt_lancamento" value="{{$livro->dt_lancamento}}" class="form-control {{$errors->has('dt_lancamento')?'is-invalid':''}}" required>
+                            <input type="date" id="dt_lancamento" name="dt_lancamento" value="{{$livro->dt_lancamento->format('Y-m-d')}}" class="form-control {{$errors->has('dt_lancamento')?'is-invalid':''}}" required>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group col-md-4">
                                 <label for="autor_id">Autor</label>
                                 <select id="autor_id" name="autor_id" class="form-control select-text {{$errors->has('autor_id')?'is-invalid':''}}" required>
-                                    <option selected value="{{$livro->autors->id}}">{{$livro->autors->nome}}</option>
+                                    <option selected value="{{$livro->autors->id ?? ''}}">{{$livro->autors->nome ?? 'Nenhum Autor Vinculado'}}</option>
                                     @foreach($autores as $autor)
                                         <option value="{{ $autor->id }}">{{$autor->nome}}</option>
                                     @endforeach
@@ -34,7 +31,7 @@
                             <div class="form-group col-md-4">
                                 <label for="genero_id">Gênero</label>
                                 <select id="genero_id" name="genero_id" class="form-control {{$errors->has('genero_id')?'is-invalid':''}}" required>
-                                    <option selected value="{{$livro->genero->id}}">{{$livro->genero->genero}}</option>
+                                    <option selected value="{{$livro->genero->id ?? ''}}">{{$livro->genero->genero ?? 'Nenhum Gênero Vinculado'}}</option>
                                     @foreach($generos as $genero)
                                         <option  @if(old('genero_id')==$genero->id) {{'selected="selected"'}} @endif value="{{$genero->id}}">{{$genero->genero}}</option>
                                     @endforeach
@@ -44,7 +41,7 @@
                             <div class="form-group col-md-4">
                                 <label for="editora_id">Editora</label>
                                 <select id="editora_id" name="editora_id" class="form-control {{$errors->has('editora_id')?'is-invalid':''}}" required>
-                                    <option selected value="{{$livro->editora->id}}">{{$livro->editora->nome}}</option>
+                                    <option selected value="{{$livro->editora->id ?? ''}}">{{$livro->editora->nome ?? 'Nenhuma Editora Vinculada'}}</option>
                                     @foreach($editoras as $editora)
                                         <option value="{{$editora->id}}">{{$editora->nome}}</option>
                                     @endforeach

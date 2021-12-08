@@ -57,7 +57,8 @@ class LivrosController extends Controller
      */
     public function show($id)
     {
-        return view('livro.show');
+        $livro = Livro::findOrFail($id);
+        return view('livro.show',['livro'=>$livro]);
     }
 
     /**
@@ -84,7 +85,13 @@ class LivrosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        request()->validate(Livro::$rules);
+        request()->validate([
+            'titulo'=>'required',
+            'dt_lancamento'=>'required',
+            'autor_id'=>'required',
+            'genero_id'=>'required',
+            'editora_id'=>'required'
+        ]);
 
         $livro = Livro::findOrFail($id);
         $livro->titulo = $request->titulo;

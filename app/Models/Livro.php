@@ -13,12 +13,14 @@ class Livro extends Model
      * @var string[]
      */
     static $rules = [
-        'titulo'=>'required',
+        'titulo'=>'required|unique:livros',
         'dt_lancamento'=>'required',
         'autor_id'=>'required',
         'genero_id'=>'required',
         'editora_id'=>'required'
     ];
+
+    protected $dates = ['dt_lancamento'];
 
     /**
      * @var string[]
