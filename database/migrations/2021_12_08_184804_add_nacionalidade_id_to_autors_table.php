@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGenerosTable extends Migration
+class AddNacionalidadeIdToAutorsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class CreateGenerosTable extends Migration
      */
     public function up()
     {
-        Schema::create('generos', function (Blueprint $table) {
-            $table->id();
-            $table->string('genero');
+        Schema::table('autors', function (Blueprint $table) {
+            $table->foreignId('nacionalidade_id')->constrained('nacionalidades');
         });
     }
 
@@ -26,6 +25,8 @@ class CreateGenerosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('generos');
+        Schema::table('autors', function (Blueprint $table) {
+            $table->foreignId('nacionalidade_id')->constrained('nacionalidades');
+        });
     }
 }

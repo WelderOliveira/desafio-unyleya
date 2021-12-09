@@ -18,7 +18,6 @@ class CreateAutorsTable extends Migration
             $table->string('nome');
             $table->date('dt_nascimento');
             $table->string('sexo');
-            $table->string('nacionalidade');
             $table->timestamps();
         });
     }

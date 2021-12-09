@@ -5,18 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Genero extends Model
+class Nacionalidade extends Model
 {
     use HasFactory;
 
     public $timestamps = false;
 
     protected $fillable = [
-        'genero'
+        'code', 'name'
     ];
 
-    public function livros()
+    public function autors()
     {
-        return $this->hasMany(Livro::class);
+        return $this->hasMany(Autor::class);
     }
 }
