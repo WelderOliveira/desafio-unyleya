@@ -46,8 +46,8 @@
                                 <hr class="mt-0 mb-4">
                                 <div class="row pt-1">
                                     <div class="col-12 mb-3">
-                                        @foreach($obras ?? 'Não' as $obra)
-                                            <p class="text-muted">{{$obra->titulo ?? 'Nenhum Livro Vinculado ao Autor'}}</p>
+                                        @foreach($autor->livros ?? 'Não' as $livro)
+                                            <p class="text-muted">{{$livro->titulo ?? 'Nenhum Livro Vinculado ao Autor'}}</p>
                                         @endforeach
                                     </div>
                                 </div>

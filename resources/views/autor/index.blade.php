@@ -26,7 +26,7 @@
                                 <td><a class='a-line' href="{{route('showAutor',$autor->id)}}">{{$autor->nome}}</a></td>
                                 <td>{{$autor->dt_nascimento}}</td>
                                 <td>{{$autor->sexo}}</td>
-                                <td>{{$autor->nacionalidade}}</td>
+                                <td>{{$autor->nacionalidade->name}}, {{$autor->nacionalidade->code}}</td>
                                 <td class="d-none d-md-table-cell d-flex justify-content-center mb-2">
                                     <div class="row">
                                         <a href="{{route('editAutor', $autor->id)}}"

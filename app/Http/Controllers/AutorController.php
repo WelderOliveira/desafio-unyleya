@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Autor;
 use App\Models\Livro;
+use App\Models\Nacionalidade;
 use Illuminate\Http\Request;
 
 class AutorController extends Controller
@@ -26,7 +27,8 @@ class AutorController extends Controller
      */
     public function create()
     {
-        return view('autor.create');
+        $nacionalidades = Nacionalidade::all();
+        return view('autor.create',['nacionalidades'=>$nacionalidades]);
     }
 
     /**
@@ -65,7 +67,8 @@ class AutorController extends Controller
     public function edit($id)
     {
         $autor = Autor::findOrFail($id);
-        return view('autor.edit', ['autor' => $autor]);
+        $nacionalidades = Nacionalidade::all();
+        return view('autor.edit', ['autor' => $autor,'nacionalidades'=>$nacionalidades]);
     }
 
     /**

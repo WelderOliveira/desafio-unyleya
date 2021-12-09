@@ -16,7 +16,7 @@ class Autor extends Model
         'nome' => 'required',
         'dt_nascimento' => 'required',
         'sexo' => 'required',
-        'nacionalidade' => 'required',
+        'nacionalidade_id' => 'required',
     ];
 
     /**
@@ -28,7 +28,7 @@ class Autor extends Model
      * @var string[]
      */
     protected $fillable = [
-        'nome', 'nacionalidade', 'sexo', 'dt_nascimento'
+        'nome', 'nacionalidade_id', 'sexo', 'dt_nascimento'
     ];
 
     /**
@@ -37,5 +37,10 @@ class Autor extends Model
     public function livros()
     {
         return $this->hasMany(Livro::class);
+    }
+
+    public function nacionalidade()
+    {
+        return $this->belongsTo(Nacionalidade::class,'nacionalidade_id','id');
     }
 }
