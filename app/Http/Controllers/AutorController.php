@@ -42,7 +42,7 @@ class AutorController extends Controller
         request()->validate(Autor::$rules);
         Autor::create($request->all());
 
-        return redirect('/autor')->with('msg', 'Autor Cadastrado com Sucesso!!!');
+        return back()->with('msg', 'Autor Cadastrado com Sucesso!!!');
     }
 
     /**

@@ -6,6 +6,7 @@ use App\Models\Autor;
 use App\Models\Editora;
 use App\Models\Genero;
 use App\Models\Livro;
+use App\Models\Nacionalidade;
 use Illuminate\Http\Request;
 
 class LivrosController extends Controller
@@ -31,7 +32,8 @@ class LivrosController extends Controller
         $autores = Autor::all()->sortBy('nome');
         $editoras = Editora::all()->sortBy('nome');
         $generos = Genero::all()->sortBy('genero');
-        return view('livro.create', ['autores' => $autores, 'editoras' => $editoras, 'generos' => $generos]);
+        $nacionalidades = Nacionalidade::all();
+        return view('livro.create', ['autores' => $autores, 'editoras' => $editoras, 'generos' => $generos,'nacionalidades'=>$nacionalidades]);
     }
 
     /**

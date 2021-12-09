@@ -49,8 +49,14 @@
                             </div>
 
                         </div>
-
-                        <input type="submit" class="btn btn-primary">
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <input type="submit" class="btn btn-primary" value="Salvar Registros">
+                            </div>
+                            <div class="col-sm-4 text-right">
+                                <a class="btn btn-primary" href="{{route('indexLivro')}}" role="button">Voltar</a>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>

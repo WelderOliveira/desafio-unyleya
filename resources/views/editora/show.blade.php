@@ -29,7 +29,7 @@
                         </div>
                         <div class="col-md-8">
                             <div class="card-body p-4">
-                                <h6>{{count($editora->livros)}} - Projects</h6>
+                                <h6>{{count($editora->livros)}} - Projeto</h6>
                                 <hr class="mt-0 mb-4">
                                 <div class="row pt-1">
                                     <div class="col-12 mb-3">

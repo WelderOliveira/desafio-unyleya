@@ -14,6 +14,10 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+
+    <link rel="shortcut icon" href="{{ asset('/image/icon.ico') }}">
+    <link rel="icon" type="image/png" href="{{ asset('/image/icon.png') }}">
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     <!-- Google Fonts -->
@@ -25,7 +29,7 @@
 
 @stack('styles')
 
-    <!-- Scripts -->
+<!-- Scripts -->
 
 </head>
 <body class="font-sans antialiased">

@@ -40,7 +40,7 @@ class EditoraController extends Controller
         request()->validate(Editora::$rules);
         Editora::create($request->all());
 
-        return redirect('/editora')->with('msg', 'Editora Cadastrada com Sucesso!!!');
+        return back()->with('msg', 'Editora Cadastrada com Sucesso!!!');
     }
 
     /**

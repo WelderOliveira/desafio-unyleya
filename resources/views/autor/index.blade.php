@@ -20,13 +20,11 @@
                         </thead>
                         <tbody>
                         @foreach($autores as $autor)
-
                             <tr>
-
                                 <td><a class='a-line' href="{{route('showAutor',$autor->id)}}">{{$autor->nome}}</a></td>
-                                <td>{{$autor->dt_nascimento}}</td>
+                                <td class="text-center">{{($autor->dt_nascimento)->format('d/m/Y')}}</td>
                                 <td>{{$autor->sexo}}</td>
-                                <td>{{$autor->nacionalidade->name}}, {{$autor->nacionalidade->code}}</td>
+                                <td>{{$autor->nacionalidade->name}}-{{$autor->nacionalidade->code}}</td>
                                 <td class="d-none d-md-table-cell d-flex justify-content-center mb-2">
                                     <div class="row">
                                         <a href="{{route('editAutor', $autor->id)}}"
@@ -72,16 +70,16 @@
                 var form = $(this).closest("form");
                 event.preventDefault();
                 Swal.fire({
-                    title: 'Você tem certeza que quer excluir esse livro?',
-                    text: "Se você excluir esse livro, ele não voltará ao menos que o cadastre novamente!",
+                    title: 'Você tem certeza que quer excluir esse autor?',
+                    text: "Se você excluir esse autor, ele não voltará ao menos que o cadastre novamente!",
                     icon: "warning",
                     showCancelButton: true,
                     confirmButtonText: 'Sim, Excluir Permanente!',
                     cancelButtonText: 'Não, Cancelar!',
                     reverseButtons: true
-                }).then((result) =>{
-                    if (result.value){
-                        if (result.isConfirmed){
+                }).then((result) => {
+                    if (result.value) {
+                        if (result.isConfirmed) {
                             form.submit();
                         }
                     }

@@ -23,11 +23,15 @@
 
                             <tr>
 
-                                <td><a class='a-line' href="{{route('showLivro',$livro->id)}}">{{$livro->titulo}}</a></td>
-
-                                <td>{{$livro->autors->nome ?? 'Autor Não Cadastrado'}}</td>
+                                <td><a class='a-line' href="{{route('showLivro',$livro->id)}}">{{$livro->titulo}}</a>
+                                </td>
                                 <td>{{$livro->genero->genero ?? 'Gênero Não Cadastrado'}}</td>
-                                <td>{{$livro->editora->nome ?? 'Editora Não Cadastrado'}}</td>
+                                <td><a class='a-line'
+                                       href="@if($livro->autors){{route('showAutor',$livro->autors->id)}}@else#@endif">{{$livro->autors->nome ?? 'Autor Não Cadastrado'}}</a>
+                                </td>
+                                <td><a class='a-line'
+                                       href="@if($livro->editora){{route('showEditora',$livro->editora->id)}}@else#@endif">{{$livro->editora->nome ?? 'Editora Não Cadastrado'}}
+                                </td>
                                 <td class="d-none d-md-table-cell d-flex justify-content-center mb-2">
                                     <div class="row">
                                         <a href="{{route('editLivro', $livro->id)}}"
@@ -80,9 +84,9 @@
                     confirmButtonText: 'Sim, Excluir Permanente!',
                     cancelButtonText: 'Não, Cancelar!',
                     reverseButtons: true
-                }).then((result) =>{
-                    if (result.value){
-                        if (result.isConfirmed){
+                }).then((result) => {
+                    if (result.value) {
+                        if (result.isConfirmed) {
                             form.submit();
                         }
                     }

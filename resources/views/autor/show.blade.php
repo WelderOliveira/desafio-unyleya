@@ -22,7 +22,7 @@
                              style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
                             <div class="mt-5">
                                 <h5>{{$autor->nome}}</h5>
-                                <p>{{$autor->nacionalidade}}</p>
+                                <p>{{$autor->nacionalidade->name}}, {{$autor->nacionalidade->code}} </p>
                                 <a href="{{route('editAutor', $autor->id)}}"
                                    class="mx-2">
                                     <i class="far fa-edit mb-5"></i></a>
@@ -42,15 +42,17 @@
                                         <p class="text-muted">{{($autor->dt_nascimento)->format('d/m/Y')}}</p>
                                     </div>
                                 </div>
-                                <h6>Projects</h6>
-                                <hr class="mt-0 mb-4">
-                                <div class="row pt-1">
-                                    <div class="col-12 mb-3">
-                                        @foreach($autor->livros ?? 'Não' as $livro)
-                                            <p class="text-muted">{{$livro->titulo ?? 'Nenhum Livro Vinculado ao Autor'}}</p>
-                                        @endforeach
+                                @if(count($autor->livros) > 0)
+                                    <h6>Projetos</h6>
+                                    <hr class="mt-0 mb-4">
+                                    <div class="row pt-1">
+                                        <div class="col-12 mb-3">
+                                            @foreach($autor->livros ?? 'Não' as $livro)
+                                                <p class="text-muted">{{$livro->titulo ?? 'Nenhum Livro Vinculado ao Autor'}}</p>
+                                            @endforeach
+                                        </div>
                                     </div>
-                                </div>
+                                @endif
                             </div>
                         </div>
                     </div>
