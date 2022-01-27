@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -82,6 +83,21 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::delete('/editora/{id}', [\App\Http\Controllers\EditoraController::class, 'destroy'])
         ->name('destroyEditora');
+});
+
+Route::get('/visualizar-email',function (){
+   return new App\Mail\NovoEmail(
+       'Teste',
+       '22/02/20000'
+   );
+});
+
+Route::get('/send-email',function (){
+    Mail::to('190039582@aluno.unb.br')->send(new \App\Mail\NovoEmail(
+        'titulo Boladão',
+        '202022202020',
+    ));
+    return 'Enviado!';
 });
 
 require __DIR__ . '/auth.php';

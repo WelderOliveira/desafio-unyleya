@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\NovoLivro;
+use App\Jobs\ExcluirLivro;
+use App\Mail\NovoEmail;
 use App\Models\Autor;
 use App\Models\Editora;
 use App\Models\Genero;
 use App\Models\Livro;
 use App\Models\Nacionalidade;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class LivrosController extends Controller
 {
@@ -45,7 +49,17 @@ class LivrosController extends Controller
     public function store(Request $request)
     {
         request()->validate(Livro::$rules);
+//        dd($request->user());
         Livro::create($request->all());
+
+
+        $email = (new NovoEmail(
+            $request->titulo,
+            $request->dt_lancamento,
+        ));
+
+        $email->subject('Livro Cadastrado;');
+        Mail::to('weldersilva326@gmail.com')->queue($email);
 
         return redirect('/')->with('msg', 'Livro Cadastrado com Sucesso');
 
